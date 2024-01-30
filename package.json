@@ -1,0 +1,21 @@
+{
+  "name": "next-strapi-static",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "strapi:dev": "cd backend && pnpm run develop",
+    "strapi:build": "cd backend && pnpm run build",
+    "strapi:start": "cd backend && pnpm run start",
+    "next:dev": "cd frontend && pnpm run dev",
+    "next:build": "cd frontend && pnpm run build",
+    "next:start": "cd frontend && pnpm run start",
+    "next:lint": "cd frontend && pnpm run lint"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
