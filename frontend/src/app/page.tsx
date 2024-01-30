@@ -13,13 +13,12 @@ export default async function Home() {
   );
   const { data: projects } = await response.json();
 
-  // console.log(projects[0].attributes.media.data[0].attributes);
   return (
     <div>
       Home{' '}
       <Image
         src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${projects[0].attributes.media.data[1].attributes.url}`}
-        alt="lol"
+        alt="Sample image"
         width={100}
         height={100}
       />
