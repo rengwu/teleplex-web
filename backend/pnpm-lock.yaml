@@ -29,6 +29,15 @@ dependencies:
   react-router-dom:
     specifier: 5.3.4
     version: 5.3.4(react@18.2.0)
+  strapi-plugin-populate-deep:
+    specifier: ^3.0.1
+    version: 3.0.1
+  strapi-plugin-schemas-to-ts:
+    specifier: ^1.1.21
+    version: 1.2.0(@strapi/design-system@1.14.1)(@strapi/icons@1.14.1)(react-dom@18.2.0)(react-router-dom@5.3.4)(react@18.2.0)(styled-components@5.3.3)(typescript@5.2.2)
+  strapi-plugin-transformer:
+    specifier: ^3.1.2
+    version: 3.1.2(@strapi/strapi@4.19.0)(lodash@4.17.21)(yup@0.32.9)
   styled-components:
     specifier: 5.3.3
     version: 5.3.3(@babel/core@7.23.9)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
@@ -9622,6 +9631,46 @@ packages:
   /statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /strapi-plugin-populate-deep@3.0.1:
+    resolution: {integrity: sha512-7t1bPPBN1AGKZlFT/6qsqmwgd7SzTA9CNzEBSzeYEjL/e0GKD2lf4wF11C2vMkfsQW2GhRAXZQRCGlLnV2XHFQ==}
+    engines: {node: '>=14.19.1 <=20.x.x', npm: '>=6.0.0'}
+    dev: false
+
+  /strapi-plugin-schemas-to-ts@1.2.0(@strapi/design-system@1.14.1)(@strapi/icons@1.14.1)(react-dom@18.2.0)(react-router-dom@5.3.4)(react@18.2.0)(styled-components@5.3.3)(typescript@5.2.2):
+    resolution: {integrity: sha512-YfoZqbwvz/0IPVgu7TEDMfEwxbP/ByHHhzZycl47SLq1FgRfaBUHPgVP6YCDC/RMCuN3j+KXRg8JW5fvpmOuzw==}
+    engines: {node: '>=14.19.1 <=21.x.x', npm: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@strapi/helper-plugin': 4.19.0(@strapi/design-system@1.14.1)(@strapi/icons@1.14.1)(react-dom@18.2.0)(react-router-dom@5.3.4)(react@18.2.0)(styled-components@5.3.3)(typescript@5.2.2)
+      pascal-case: 3.1.2
+      prettier: 2.8.4
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - '@strapi/design-system'
+      - '@strapi/icons'
+      - '@types/react'
+      - debug
+      - react
+      - react-dom
+      - react-native
+      - react-router-dom
+      - styled-components
+      - typescript
+    dev: false
+
+  /strapi-plugin-transformer@3.1.2(@strapi/strapi@4.19.0)(lodash@4.17.21)(yup@0.32.9):
+    resolution: {integrity: sha512-aRjWqrZJ2QcsSDqOE27xzzmDG1c+yg8o9yUb5zFhR94+4zbGxTpLQndelkWtzNaLv5s2HhExx1JyCn/F9GZPpQ==}
+    engines: {node: '>=14.19.1 <=20.x.x', npm: '>=6.0.0'}
+    peerDependencies:
+      '@strapi/strapi': ^4.0.7
+      lodash: ^4.17.21
+      yup: ^0.32.9
+    dependencies:
+      '@strapi/strapi': 4.19.0(@babel/runtime@7.23.9)(@codemirror/autocomplete@6.12.0)(@codemirror/language@6.10.0)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.5)(@codemirror/state@6.4.0)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.23.1)(better-sqlite3@8.6.0)(codemirror@6.0.1)(react-dom@18.2.0)(react-router-dom@5.3.4)(react@18.2.0)(redux@4.2.1)(scheduler@0.23.0)(styled-components@5.3.3)
+      lodash: 4.17.21
+      yup: 0.32.9
     dev: false
 
   /stream-chain@2.2.5:
