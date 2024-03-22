@@ -4,29 +4,26 @@ Static-Site-Generation (SSG) using Next.js with Strapi as CMS.
 
 ## Getting Started
 
-### Install all dependencies
-
-```bash
-pnpm install:all
-```
-
-Make sure that your .env files are created in both `/backend` and `/frontend` folders
+Make sure that your .env files are created in both `/backend` and `/frontend` folders based on their respective `.env.example` files.
 
 ### Start Strapi instance
 
 ```bash
-pnpm strapi:build
-pnpm strapi:dev
+cd backend
+npm run build
+npm run develop
 ```
 
 ### Start Next.js development server
 
 ```bash
-pnpm next:dev
+cd frontend
+npm run dev
 ```
 
-### Build Next.js site
+### Build static Next.js site
 
 ```bash
-pnpm next:build
+cd frontend
+npm run build
 ```
