@@ -1,14 +1,11 @@
-const { resolve } = require('path');
-const { readdir } = require('fs').promises;
-const { cpSync, rmSync } = require('fs');
+const { cpSync, rmSync, readdirSync, existsSync } = require('fs');
 
-async function getDirs(dir) {
-  const dirents = await readdir(dir, { withFileTypes: true });
+async function getFolderNames(dir) {
+  const dirents = readdirSync(dir, { withFileTypes: true });
   let dirs = [];
   for (const dirent of dirents) {
-    const res = resolve(dir, dirent.name);
     if (dirent.isDirectory()) {
-      dirs.push(dirent.path + dirent.name);
+      dirs.push(dirent.name);
     }
   }
   return dirs;
@@ -18,14 +15,17 @@ async function getDirs(dir) {
   let src, dest;
 
   console.log(`[copyGeneratedStrapiTypes.js] Copying content-types...`);
-  let dirs = await getDirs('../backend/src/api/');
-  for (const dir of dirs) {
-    const src = `${dir}/content-types`;
-    const dest = `./src/types/api/${dir.split('/').slice(-1)[0]}/content-types`;
-    try {
+  const apiFolderPath = '../backend/src/api';
+  let folderNames = await getFolderNames(apiFolderPath);
+  for (const folderName of folderNames) {
+    const src = `${apiFolderPath}/${folderName}/content-types`;
+    if (existsSync(src)) {
+      const dest = `./src/types/api/${folderName}/content-types`;
       cpSync(src, dest, { recursive: true });
-    } catch {
-      console.log(`[copyGeneratedStrapiTypes.js] ${src} > ${dest} failed`);
+    } else {
+      console.log(
+        `[copyGeneratedStrapiTypes.js] dir doesn't exist, skipping ${src}`,
+      );
     }
   }
 
