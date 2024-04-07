@@ -13,6 +13,9 @@ export function getRandomInt(min: number, max: number) {
 }
 
 export function getStrapiImage(imageData: Media | undefined): string | null {
+  if (imageData && 'staticUrl' in imageData) {
+    return `${imageData.staticUrl}`;
+  }
   if (!imageData || !('url' in imageData)) {
     return null;
   }

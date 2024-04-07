@@ -1,3 +1,5 @@
+import { fetchAllImages } from './static';
+
 const apiHost = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 export async function strapiRequest(
@@ -29,8 +31,12 @@ export async function strapiRequest(
     );
   }
 
-  const result = await response.json();
+  let result = await response.json();
 
+  // fetch static CMS images on production build
+  if (process.env.NODE_ENV === 'production') {
+    result = fetchAllImages(result);
+  }
   return result;
 }
 

@@ -19,6 +19,7 @@ export interface Media {
   mime: string;
   size: number;
   url: string;
+  staticUrl?: string;
   previewUrl: string;
   provider: string;
   createdAt: Date;
