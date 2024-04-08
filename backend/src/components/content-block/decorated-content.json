@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_block_decorated_contents",
+  "info": {
+    "displayName": "Decorated Content",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mainContent": {
+      "type": "text"
+    },
+    "subContent": {
+      "type": "text"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.link"
+    }
+  }
+}

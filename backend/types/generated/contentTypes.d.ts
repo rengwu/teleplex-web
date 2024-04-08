@@ -381,7 +381,9 @@ export interface ApiPagePage extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
-    blocks: Attribute.DynamicZone<['content-block.hero']>;
+    blocks: Attribute.DynamicZone<
+      ['content-block.hero', 'content-block.decorated-content']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &

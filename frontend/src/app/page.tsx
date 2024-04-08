@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+import { getPageByName } from '@/api/page';
 import Link from 'next/link';
 
 export default async function Home() {
-  // const site = await strapiRequest(`/api/site?populate=deep&populate=*`).data;
+  const data = await getPageByName('home');
 
   return (
     <div>
@@ -11,6 +11,7 @@ export default async function Home() {
         <Link href="/about">About</Link>
         <Link href="/somerandomlink">somerandomlink</Link>
       </div>
+      <div>{JSON.stringify(data)}</div>
     </div>
   );
 }

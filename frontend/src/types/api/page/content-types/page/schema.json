@@ -24,7 +24,8 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "content-block.hero"
+        "content-block.hero",
+        "content-block.decorated-content"
       ]
     }
   }
