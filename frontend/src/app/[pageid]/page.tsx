@@ -1,7 +1,6 @@
 import { Page, Page_Plain } from '@/types/api/page/content-types/page/page';
 import { strapiRequest } from '@/utils/api';
-import { Metadata } from 'next';
-import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
   const response = await strapiRequest<Page_Plain[]>(`/api/pages`);
@@ -29,6 +28,7 @@ export default async function Page({ params }: { params: { pageid: string } }) {
   return (
     <div>
       <div>Hello page</div>
+      <Link href="/">Home</Link>
     </div>
   );
 }
