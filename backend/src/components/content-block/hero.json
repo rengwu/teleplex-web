@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_block_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mainTagline": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "animatedText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.text"
+    }
+  }
+}

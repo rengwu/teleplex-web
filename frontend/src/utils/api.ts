@@ -1,12 +1,24 @@
+import { Payload } from '@/types/common/schemas-to-ts/Payload';
 import { fetchAllImages } from './static';
 
 const apiHost = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
-export async function strapiRequest(
+type ErrorResponse = {
+  success: false;
+  status: 'error';
+  message: string;
+};
+
+type SuccessResponse = {
+  success: true;
+  status: 'success';
+};
+
+export async function strapiRequest<T>(
   url: string,
   params: any = {},
   method = 'GET',
-) {
+): Promise<(Payload<T> & SuccessResponse) | ErrorResponse> {
   const options: any = {
     method,
     headers: {
@@ -35,9 +47,9 @@ export async function strapiRequest(
 
   // fetch static CMS images on production build
   if (process.env.NODE_ENV === 'production') {
-    result = fetchAllImages(result);
+    result = await fetchAllImages(result);
   }
-  return result;
+  return { ...result, status: 'success', success: true };
 }
 
 function objectToQueryString(obj: any) {
@@ -46,8 +58,9 @@ function objectToQueryString(obj: any) {
     .join('&');
 }
 
-function generateErrorResponse(message: string) {
+function generateErrorResponse(message: string): ErrorResponse {
   return {
+    success: false,
     status: 'error',
     message,
   };

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_primitives_texts",
+  "info": {
+    "displayName": "text",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}
