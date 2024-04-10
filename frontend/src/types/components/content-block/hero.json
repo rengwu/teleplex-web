@@ -17,6 +17,9 @@
       "type": "component",
       "repeatable": true,
       "component": "primitives.text"
+    },
+    "negativeTopMargin": {
+      "type": "boolean"
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_components_nested_menus",
+  "info": {
+    "displayName": "Nested Menu",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "main_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "primitives.link"
+    },
+    "submenus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.menu"
+    }
+  }
+}

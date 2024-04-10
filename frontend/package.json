@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
     "clsx": "^2.1.0",
     "fs": "0.0.1-security",
     "lodash": "^4.17.21",

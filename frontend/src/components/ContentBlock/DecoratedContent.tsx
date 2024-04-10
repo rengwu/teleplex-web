@@ -1,12 +1,13 @@
 import { GenericReactHTMLNode } from '@/types';
 import { DecoratedContent_Plain } from '@/types/components/content-block/interfaces/DecoratedContent';
+import { ContentPadding } from '../ContentPadding';
 
 export function DecoratedContent({
   data,
   ...props
 }: { data?: DecoratedContent_Plain } & GenericReactHTMLNode) {
   return (
-    <div {...props}>
+    <ContentPadding {...props}>
       <div>{data?.mainContent}</div>
       <div>{data?.subContent}</div>
       <div>
@@ -16,6 +17,6 @@ export function DecoratedContent({
           </a>
         ))}
       </div>
-    </div>
+    </ContentPadding>
   );
 }

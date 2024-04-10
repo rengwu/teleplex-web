@@ -9,25 +9,12 @@ export default async function Home() {
   const { blocks, name, displayTitle } = page ?? {};
 
   return (
-    <div>
-      <div>Hello {displayTitle}</div>
-      <div>
-        <Link href="/about">About</Link>
-        <Link href="/somerandomlink">somerandomlink</Link>
-      </div>
-      {/* <div>{JSON.stringify(page)}</div> */}
-      <div>
-        {blocks.map((block, index) => {
-          return (
-            <ContentBlock
-              key={index}
-              name={block.__component}
-              data={block}
-              style={{ border: '1px solid white' }}
-            />
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {blocks.map((block, index) => {
+        return (
+          <ContentBlock key={index} name={block.__component} data={block} />
+        );
+      })}
+    </>
   );
 }

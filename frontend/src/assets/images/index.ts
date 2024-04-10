@@ -1,0 +1,1 @@
+export * as VectorsTELEPLEX from "./vectors/TELEPLEX.svg";

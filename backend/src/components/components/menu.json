@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_primitives_menus",
+  "info": {
+    "displayName": "menu",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.link"
+    }
+  }
+}

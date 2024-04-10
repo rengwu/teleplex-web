@@ -8,16 +8,19 @@ export interface Hero {
   mainTagline?: string;
   buttonText?: string;
   animatedText: Text[];
+  negativeTopMargin?: boolean;
 }
 export interface Hero_Plain {
   mainTagline?: string;
   buttonText?: string;
   animatedText: Text_Plain[];
+  negativeTopMargin?: boolean;
 }
 
 export interface Hero_NoRelations {
   mainTagline?: string;
   buttonText?: string;
   animatedText: Text_NoRelations[];
+  negativeTopMargin?: boolean;
 }
 
