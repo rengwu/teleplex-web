@@ -25,7 +25,9 @@
       "type": "dynamiczone",
       "components": [
         "content-block.hero",
-        "content-block.decorated-content"
+        "content-block.decorated-content",
+        "content-block.page-hero",
+        "content-block.article-carousel"
       ]
     }
   }

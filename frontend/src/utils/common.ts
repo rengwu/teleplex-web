@@ -21,3 +21,14 @@ export function getStrapiImage(imageData: Media | undefined): string | null {
   }
   return `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${imageData.url}`;
 }
+
+// combine objects similar to a spread operator
+export const combine = (...objects: (object | undefined | null | false)[]) => {
+  let result = {};
+  for (const key in objects) {
+    if (objects[key]) {
+      result = { ...result, ...objects[key] };
+    }
+  }
+  return result;
+};

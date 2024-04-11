@@ -26,20 +26,15 @@ export default async function Page({ params }: PageProps) {
   const page = await getPageByName(params.pageName);
   if (!page) return <div>Page Not Found</div>;
 
-  const { blocks, name, displayTitle } = page ?? {};
+  const { blocks } = page ?? {};
 
   return (
-    <div className="border border-red-500">
+    <>
       {blocks.map((block, index) => {
         return (
-          <ContentBlock
-            key={index}
-            name={block.__component}
-            data={block}
-            style={{ border: '1px solid white' }}
-          />
+          <ContentBlock key={index} name={block.__component} data={block} />
         );
       })}
-    </div>
+    </>
   );
 }

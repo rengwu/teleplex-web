@@ -1,4 +1,6 @@
-import { GLOBAL_CONTENT_MAX_WIDTH } from '@/app/layout';
+'use client';
+
+import { GLOBAL_CONTENT_MAX_WIDTH } from '@/app/globals';
 import { GenericReactHTMLNode } from '@/types';
 import { cn } from '@/utils/common';
 

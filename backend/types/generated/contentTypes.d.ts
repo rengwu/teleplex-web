@@ -858,7 +858,12 @@ export interface ApiPagePage extends Schema.CollectionType {
         minLength: 3;
       }>;
     blocks: Attribute.DynamicZone<
-      ['content-block.hero', 'content-block.decorated-content']
+      [
+        'content-block.hero',
+        'content-block.decorated-content',
+        'content-block.page-hero',
+        'content-block.article-carousel'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -882,7 +887,7 @@ export interface ApiSiteSite extends Schema.SingleType {
   };
   attributes: {
     Title: Attribute.String;
-    header_menu: Attribute.DynamicZone<['components.menu']>;
+    header_menu: Attribute.Component<'components.menu', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::site.site', 'oneToOne', 'admin::user'> &

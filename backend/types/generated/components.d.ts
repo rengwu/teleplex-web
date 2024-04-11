@@ -8,19 +8,38 @@ export interface ComponentsMenu extends Schema.Component {
     description: '';
   };
   attributes: {
-    item: Attribute.Component<'primitives.link', true>;
+    sub_links: Attribute.Component<'primitives.link', true>;
+    label: Attribute.String;
+    href: Attribute.String;
+    icon: Attribute.Relation<'components.menu', 'oneToOne', 'api::icon.icon'>;
   };
 }
 
-export interface ComponentsNestedMenu extends Schema.Component {
-  collectionName: 'components_components_nested_menus';
+export interface ContentBlockArticleCarousel extends Schema.Component {
+  collectionName: 'components_content_block_article_carousels';
   info: {
-    displayName: 'Nested Menu';
-    icon: 'grid';
+    displayName: 'Article Carousel';
+    icon: 'dashboard';
+    description: '';
   };
   attributes: {
-    main_link: Attribute.Component<'primitives.link'>;
-    submenus: Attribute.Component<'components.menu', true>;
+    title: Attribute.String;
+    mode: Attribute.Enumeration<['most_recent', 'featured']> &
+      Attribute.DefaultTo<'most_recent'>;
+    featured_articles: Attribute.Relation<
+      'content-block.article-carousel',
+      'oneToMany',
+      'api::news-article.news-article'
+    >;
+    limit: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Attribute.DefaultTo<10>;
   };
 }
 
@@ -47,9 +66,28 @@ export interface ContentBlockHero extends Schema.Component {
   };
   attributes: {
     mainTagline: Attribute.String;
-    buttonText: Attribute.String;
     animatedText: Attribute.Component<'primitives.text', true>;
     negativeTopMargin: Attribute.Boolean;
+    caption: Attribute.String;
+    links: Attribute.Component<'primitives.link', true>;
+    fullScreenHeight: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ContentBlockPageHero extends Schema.Component {
+  collectionName: 'components_content_block_page_heroes';
+  info: {
+    displayName: 'Page Hero';
+    icon: 'star';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    caption: Attribute.String;
+    links: Attribute.Component<'primitives.link', true>;
+    negativeTopMargin: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
@@ -82,9 +120,10 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'components.menu': ComponentsMenu;
-      'components.nested-menu': ComponentsNestedMenu;
+      'content-block.article-carousel': ContentBlockArticleCarousel;
       'content-block.decorated-content': ContentBlockDecoratedContent;
       'content-block.hero': ContentBlockHero;
+      'content-block.page-hero': ContentBlockPageHero;
       'primitives.link': PrimitivesLink;
       'primitives.text': PrimitivesText;
     }

@@ -1,12 +1,7 @@
 import { GenericReactHTMLNode } from '@/types';
 import React from 'react';
-import { DecoratedContent } from './DecoratedContent';
-import { Hero } from './Hero';
-
-const componentMap: { [key: string]: React.JSX.Element } = {
-  'content-block.hero': <Hero />,
-  'content-block.decorated-content': <DecoratedContent />,
-};
+import { componentMap } from './_components';
+import { MissingContentBlock } from './MissingContentBlock';
 
 export const ContentBlock = ({
   name,
@@ -17,7 +12,7 @@ export const ContentBlock = ({
   data: any;
 } & GenericReactHTMLNode) => {
   if (!(name in componentMap)) {
-    return <></>;
+    return <MissingContentBlock name={name} />;
   }
   return React.cloneElement(componentMap[name], { data, ...props });
 };

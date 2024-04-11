@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_content_block_article_carousels",
+  "info": {
+    "displayName": "Article Carousel",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": [
+        "most_recent",
+        "featured"
+      ],
+      "default": "most_recent"
+    },
+    "featured_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-article.news-article"
+    },
+    "limit": {
+      "type": "integer",
+      "required": true,
+      "default": 10,
+      "min": 1
+    }
+  }
+}

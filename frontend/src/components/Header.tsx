@@ -4,7 +4,7 @@ import { GenericReactHTMLNode } from '@/types';
 import { cn } from '@/utils/common';
 import Link from 'next/link';
 import { ContentPadding } from './ContentPadding';
-import { GLOBAL_HEADER_HEIGHT } from '@/app/layout';
+import { GLOBAL_HEADER_HEIGHT } from '@/app/globals';
 
 export function Header({
   className,

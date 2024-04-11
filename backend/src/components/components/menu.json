@@ -7,10 +7,21 @@
   },
   "options": {},
   "attributes": {
-    "item": {
+    "sub_links": {
       "type": "component",
       "repeatable": true,
       "component": "primitives.link"
+    },
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::icon.icon"
     }
   }
 }

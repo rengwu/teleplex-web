@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_content_block_page_heroes",
+  "info": {
+    "displayName": "Page Hero",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.link"
+    },
+    "negativeTopMargin": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
