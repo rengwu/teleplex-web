@@ -5,13 +5,18 @@ import { cn } from '@/utils/common';
 import Link from 'next/link';
 import { ContentPadding } from './ContentPadding';
 import { GLOBAL_HEADER_HEIGHT } from '@/app/globals';
+import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
 
 export function Header({
   className,
   innerClassName,
   style,
+  navItems = [],
   ...rest
-}: { innerClassName?: string } & GenericReactHTMLNode) {
+}: {
+  innerClassName?: string;
+  navItems?: Menu_Plain[];
+} & GenericReactHTMLNode) {
   return (
     <div
       className={cn(
@@ -28,8 +33,12 @@ export function Header({
       >
         <Link href="/">TELEPLEX</Link>
         <div className="flex gap-4">
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+          {/* TODO: implement dropdown for nested menus */}
+          {navItems.map((navItem) => (
+            <Link key={navItem.href} href={navItem.href ?? ''}>
+              {navItem.label}
+            </Link>
+          ))}
         </div>
       </ContentPadding>
     </div>

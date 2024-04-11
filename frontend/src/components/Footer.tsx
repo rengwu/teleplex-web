@@ -1,3 +1,5 @@
+'use client';
+
 import { GenericReactHTMLNode } from '@/types';
 import { cn } from '@/utils/common';
 import Link from 'next/link';

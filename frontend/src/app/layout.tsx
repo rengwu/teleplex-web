@@ -5,14 +5,22 @@ import './globals.css';
 
 import { strapiRequest } from '@/utils/api';
 import { GLOBAL_CONTENT_MAX_WIDTH, bodyFont } from './globals';
+import { Site_Plain } from '@/types/api/site/content-types/site/site';
+import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const response = await strapiRequest(`/api/site`);
-  console.log(response);
+  let headerMenu: Menu_Plain[] = [];
+
+  const response = await strapiRequest<Site_Plain>(
+    `/api/site?populate=deep&populate=*`,
+  );
+  if (response.success) {
+    headerMenu = response.data.header_menu;
+  }
 
   return (
     <html lang="en">
@@ -22,7 +30,7 @@ export default async function RootLayout({
           'relative flex flex-col h-full min-h-screen overflow-auto overflow-x-hidden',
         )}
       >
-        <Header className="sticky top-0 z-10" />
+        <Header className="sticky top-0 z-10" navItems={headerMenu} />
         <div
           className="flex flex-col items-center w-full flex-grow text-sm text-wrap"
           id="content-container"

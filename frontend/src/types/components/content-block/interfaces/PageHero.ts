@@ -9,12 +9,14 @@ export interface PageHero {
   caption?: string;
   links: Link[];
   negativeTopMargin?: boolean;
+  hasBack: boolean;
 }
 export interface PageHero_Plain {
   title?: string;
   caption?: string;
   links: Link_Plain[];
   negativeTopMargin?: boolean;
+  hasBack: boolean;
 }
 
 export interface PageHero_NoRelations {
@@ -22,5 +24,6 @@ export interface PageHero_NoRelations {
   caption?: string;
   links: Link_NoRelations[];
   negativeTopMargin?: boolean;
+  hasBack: boolean;
 }
 

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { cloneElement } from 'react';
 
 const common = {
-  className: 'px-2 py-2 flex flex-row flex-nowrap items-center justify-center',
+  className:
+    'px-4 py-2 flex flex-row flex-nowrap items-center justify-center font-semibold rounded text-black/90',
   style: {},
 };
 

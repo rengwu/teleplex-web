@@ -88,6 +88,9 @@ export interface ContentBlockPageHero extends Schema.Component {
     caption: Attribute.String;
     links: Attribute.Component<'primitives.link', true>;
     negativeTopMargin: Attribute.Boolean & Attribute.DefaultTo<false>;
+    hasBack: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
   };
 }
 

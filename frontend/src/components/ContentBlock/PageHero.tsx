@@ -26,18 +26,25 @@ export function PageHero({
       )}
     >
       <ContentPadding className="" {...props}>
-        <div>
-          <ButtonContainer className="mb-6">
-            <Button onClick={() => {}} icon={<BiChevronLeft />} variant="naked">
-              Back
-            </Button>
-          </ButtonContainer>
+        <div className="pt-4">
+          {data?.hasBack && (
+            <ButtonContainer className="">
+              <Button
+                onClick={() => {}}
+                icon={<BiChevronLeft />}
+                variant="naked"
+                className="px-0"
+              >
+                Back
+              </Button>
+            </ButtonContainer>
+          )}
           <div className="grid lg:grid-cols-2">
             <div
               className={cn(
                 titleFont.className,
                 'font-semibold text-3xl',
-                'mb-8',
+                'mt-4 mb-8',
                 'lg:col-span-2',
               )}
             >

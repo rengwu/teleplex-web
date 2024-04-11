@@ -21,6 +21,11 @@
     "negativeTopMargin": {
       "type": "boolean",
       "default": false
+    },
+    "hasBack": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
