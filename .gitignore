@@ -30,7 +30,7 @@ frontend/next-env.d.ts
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+# Icon
 .Spotlight-V100
 .Trashes
 ._*
