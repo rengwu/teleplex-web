@@ -39,7 +39,7 @@ export async function fetchAllImages(strapiData: { [key: string]: any }) {
       typeof strapiData['mime'] === 'string' &&
       strapiData['mime'].startsWith('image');
     if (isImage) {
-      fetch(`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${strapiData.url}`)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${strapiData.url}`)
         .then((res) => res.blob())
         .then(async (blob) => {
           const imageName = sanitizeString(strapiData.name);
