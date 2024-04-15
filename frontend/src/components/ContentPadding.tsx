@@ -2,7 +2,7 @@
 
 import { GLOBAL_CONTENT_MAX_WIDTH } from '@/app/globals';
 import { GenericReactHTMLNode } from '@/types';
-import { cn } from '@/utils/common';
+import { cn, combine } from '@/utils/common';
 
 export const ContentPadding = ({
   children,
@@ -11,12 +11,14 @@ export const ContentPadding = ({
   innerStyle = {},
   affectsHeight = true,
   affectsWidth = true,
+  fullWidth = false,
   ...rest
 }: {
   innerClassName?: string;
   innerStyle?: object;
   affectsHeight?: boolean;
   affectsWidth?: boolean;
+  fullWidth?: boolean;
 } & GenericReactHTMLNode) => {
   return (
     <div className={`w-full flex flex-col items-center ${className}`} {...rest}>
@@ -26,10 +28,10 @@ export const ContentPadding = ({
           affectsWidth ? 'px-[16px] sm:px-[24px]' : '',
           `w-full ${innerClassName}`,
         )}
-        style={{
-          maxWidth: GLOBAL_CONTENT_MAX_WIDTH,
-          ...innerStyle,
-        }}
+        style={combine(
+          !fullWidth && { maxWidth: GLOBAL_CONTENT_MAX_WIDTH },
+          innerStyle,
+        )}
       >
         {children}
       </div>

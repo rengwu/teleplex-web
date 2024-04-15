@@ -1,6 +1,5 @@
 import { getPageByName } from '@/api/page';
 import { ContentBlock } from '@/components/ContentBlock';
-import Link from 'next/link';
 
 export default async function Home() {
   const page = await getPageByName('home');

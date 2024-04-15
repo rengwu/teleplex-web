@@ -40,6 +40,7 @@ export interface ContentBlockArticleCarousel extends Schema.Component {
         number
       > &
       Attribute.DefaultTo<10>;
+    links: Attribute.Component<'primitives.link', true>;
   };
 }
 

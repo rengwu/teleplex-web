@@ -28,6 +28,11 @@
       "required": true,
       "default": 10,
       "min": 1
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.link"
     }
   }
 }
