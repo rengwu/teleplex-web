@@ -2,7 +2,6 @@
 
 import { GenericReactHTMLNode } from '@/types';
 import { cn, getStrapiImage } from '@/utils/common';
-import { titleFont } from '@/app/globals';
 import { ArticleCarousel_Plain } from '@/types/components/content-block/interfaces/ArticleCarousel';
 import { NewsArticle_Plain } from '@/types/api/news-article/content-types/news-article/news-article';
 import { ContentPadding } from '@/components/ContentPadding';
@@ -29,7 +28,7 @@ export function ArticleCarouselClient({
     <div className={cn('py-24 bg-gray-200/50', className)} {...props}>
       <ContentPadding>
         <div className="flex flex-row justify-between items-center mb-8">
-          <div className={cn(titleFont.className, 'font-semibold text-3xl')}>
+          <div className={cn('font-title font-semibold text-3xl')}>
             {data?.title}
           </div>
           <Link href={`/articles`}>See More</Link>

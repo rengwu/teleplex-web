@@ -1,6 +1,6 @@
 'use client';
 
-import { GLOBAL_HEADER_HEIGHT, titleFont } from '@/app/globals';
+import { GLOBAL_HEADER_HEIGHT } from '@/app/globals';
 import { GenericReactHTMLNode } from '@/types';
 import { Hero_Plain } from '@/types/components/content-block/interfaces/Hero';
 import { cn, combine } from '@/utils/common';
@@ -36,8 +36,7 @@ export function Hero({
       <ContentPadding innerClassName="flex flex-col">
         <div
           className={cn(
-            titleFont.className,
-            'text-5xl font-semibold leading-tight break-words',
+            'text-5xl font-title font-semibold leading-tight break-words',
             'mb-8',
           )}
         >

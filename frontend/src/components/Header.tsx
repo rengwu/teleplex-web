@@ -20,7 +20,7 @@ export function Header({
   return (
     <div
       className={cn(
-        'flex justify-center items-center text-white mix-blend-difference',
+        'flex justify-center items-center text-white mix-blend-difference backdrop-blur',
         className,
       )}
       style={{ height: GLOBAL_HEADER_HEIGHT, ...style }}

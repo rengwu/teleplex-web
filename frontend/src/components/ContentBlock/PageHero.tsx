@@ -1,6 +1,6 @@
 'use client';
 
-import { GLOBAL_HEADER_HEIGHT, titleFont } from '@/app/globals';
+import { GLOBAL_HEADER_HEIGHT } from '@/app/globals';
 import { GenericReactHTMLNode } from '@/types';
 import { PageHero_Plain } from '@/types/components/content-block/interfaces/PageHero';
 import { cn, combine } from '@/utils/common';
@@ -42,8 +42,7 @@ export function PageHero({
           <div className="grid lg:grid-cols-2">
             <div
               className={cn(
-                titleFont.className,
-                'font-semibold text-3xl',
+                'font-title font-semibold text-3xl',
                 'mt-4 mb-8',
                 'lg:col-span-2',
               )}

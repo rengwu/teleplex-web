@@ -4,9 +4,34 @@ import { cn } from '@/utils/common';
 import './globals.css';
 
 import { strapiRequest } from '@/utils/api';
-import { GLOBAL_CONTENT_MAX_WIDTH, bodyFont } from './globals';
+import { GLOBAL_CONTENT_MAX_WIDTH } from './globals';
 import { Site_Plain } from '@/types/api/site/content-types/site/site';
 import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
+
+import { DM_Sans, Fira_Mono } from 'next/font/google';
+
+const titleFont = Fira_Mono({
+  variable: '--font-title',
+  weight: '400',
+  subsets: ['latin'],
+  fallback: ['Comic Sans'],
+});
+
+const bodyFont = DM_Sans({
+  variable: '--font-body',
+  subsets: ['latin'],
+  fallback: ['Comic Sans'],
+});
+
+const monoFont = Fira_Mono({
+  variable: '--font-mono',
+  subsets: ['latin'],
+  weight: '400',
+  fallback: ['Comic Sans'],
+});
+
+const fonts = [titleFont, bodyFont, monoFont];
+const fontClass = fonts.reduce((a, c) => `${a} ${c.variable}`, '');
 
 export default async function RootLayout({
   children,
@@ -23,11 +48,10 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className={cn(fontClass)}>
       <body
         className={cn(
-          bodyFont.className,
-          'relative flex flex-col h-full min-h-screen overflow-auto overflow-x-hidden',
+          'relative flex flex-col h-full min-h-screen overflow-auto overflow-x-hidden font-body',
         )}
       >
         <Header className="sticky top-0 z-10" navItems={headerMenu} />

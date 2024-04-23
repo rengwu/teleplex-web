@@ -4,7 +4,6 @@ import { GenericReactHTMLNode } from '@/types';
 import { DecoratedContent_Plain } from '@/types/components/content-block/interfaces/DecoratedContent';
 import { ContentPadding } from '../ContentPadding';
 import { cn } from '@/utils/common';
-import { titleFont } from '@/app/globals';
 import { Button } from '../Button';
 import { ButtonContainer } from '../ButtonContainer';
 
@@ -17,13 +16,7 @@ export function DecoratedContent({
       <ContentPadding className="" {...props}>
         <div className="grid lg:grid-cols-2">
           <div>
-            <div
-              className={cn(
-                titleFont.className,
-                'font-semibold text-3xl',
-                'mb-8',
-              )}
-            >
+            <div className={cn('font-title font-semibold text-3xl', 'mb-8')}>
               {data?.mainContent}
             </div>
             <div className="mb-4">{data?.subContent}</div>
