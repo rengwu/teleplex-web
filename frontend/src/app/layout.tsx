@@ -4,30 +4,33 @@ import { cn } from '@/utils/common';
 import './globals.css';
 
 import { strapiRequest } from '@/utils/api';
-import { GLOBAL_CONTENT_MAX_WIDTH } from './globals';
 import { Site_Plain } from '@/types/api/site/content-types/site/site';
 import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
 
-import { DM_Sans, Fira_Mono } from 'next/font/google';
+import { Archivo, DM_Sans, Fira_Mono, Inter } from 'next/font/google';
+import {
+  GLOBAL_CONTENT_MAX_WIDTH,
+  GLOBAL_CONTENT_MAX_WIDTH_PX,
+} from './globals';
 
-const titleFont = Fira_Mono({
+const titleFont = Archivo({
   variable: '--font-title',
-  weight: '400',
+  weight: '600',
   subsets: ['latin'],
-  fallback: ['Comic Sans'],
+  fallback: ['Times'],
 });
 
-const bodyFont = DM_Sans({
+const bodyFont = Inter({
   variable: '--font-body',
   subsets: ['latin'],
-  fallback: ['Comic Sans'],
+  fallback: ['Arial'],
 });
 
 const monoFont = Fira_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
   weight: '400',
-  fallback: ['Comic Sans'],
+  fallback: ['Courier'],
 });
 
 const fonts = [titleFont, bodyFont, monoFont];
@@ -51,10 +54,25 @@ export default async function RootLayout({
     <html lang="en" className={cn(fontClass)}>
       <body
         className={cn(
-          'relative flex flex-col h-full min-h-screen overflow-auto overflow-x-hidden font-body',
+          'relative flex flex-col items-center h-full min-h-screen overflow-auto overflow-x-hidden font-body',
         )}
       >
-        <Header className="sticky top-0 z-10" navItems={headerMenu} />
+        <div
+          className="sticky w-full backdrop-blur-[16px] z-[10] mix-blend-exclusion contrast-[1.8] brightness-[0.9] saturate-[0.2] overflow-hidden shadow-2xl shadow-black/10"
+          style={{
+            maxWidth: `clamp(100px, ${GLOBAL_CONTENT_MAX_WIDTH_PX}px, calc(100vw - 32px))`,
+            top: '8px',
+            left: '8px',
+            right: '8px',
+            borderRadius: '4px',
+          }}
+        >
+          <Header
+            className="bg-gray-200 bg-opacity-[0.14]"
+            navItems={headerMenu}
+          />
+        </div>
+
         <div
           className="flex flex-col items-center w-full flex-grow text-sm text-wrap"
           id="content-container"

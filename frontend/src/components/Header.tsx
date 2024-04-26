@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ContentPadding } from './ContentPadding';
 import { GLOBAL_HEADER_HEIGHT } from '@/app/globals';
 import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
+import { Brand } from './Brand';
 
 export function Header({
   className,
@@ -20,7 +21,7 @@ export function Header({
   return (
     <div
       className={cn(
-        'flex justify-center items-center text-white mix-blend-difference backdrop-blur',
+        'flex justify-center items-center text-white pointer-events-none',
         className,
       )}
       style={{ height: GLOBAL_HEADER_HEIGHT, ...style }}
@@ -31,11 +32,19 @@ export function Header({
         affectsHeight={false}
         innerClassName="flex justify-between w-full text-sm"
       >
-        <Link href="/">TELEPLEX</Link>
-        <div className="flex gap-4">
+        <Link className="pointer-events-auto" href="/">
+          <div className="h-[36px] py-2 rounded ">
+            <Brand fill="white" className="h-full" />
+          </div>
+        </Link>
+        <div className="flex gap-4 items-center">
           {/* TODO: implement dropdown for nested menus */}
           {navItems.map((navItem) => (
-            <Link key={navItem.href} href={navItem.href ?? ''}>
+            <Link
+              className="font-medium text-[16px] pointer-events-auto"
+              key={navItem.href}
+              href={navItem.href ?? ''}
+            >
               {navItem.label}
             </Link>
           ))}

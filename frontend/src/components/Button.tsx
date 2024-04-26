@@ -5,13 +5,13 @@ import { cloneElement } from 'react';
 
 const common = {
   className:
-    'px-4 py-2 flex flex-row flex-nowrap items-center justify-center font-semibold rounded text-black/90',
+    'px-4 py-2 flex flex-row flex-nowrap items-center justify-center font-semibold rounded text-white/90',
   style: {},
 };
 
 const variants: { [key: string]: { className: string; style: object } } = {
   default: {
-    className: cn(common.className, 'bg-blue-200'),
+    className: cn(common.className, 'bg-blue-600'),
     style: combine(common.style, {}),
   },
   naked: {
