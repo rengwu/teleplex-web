@@ -13,8 +13,10 @@ export function Header({
   innerClassName,
   style,
   navItems = [],
+  fullWidth,
   ...rest
 }: {
+  fullWidth?: boolean;
   innerClassName?: string;
   navItems?: Menu_Plain[];
 } & GenericReactHTMLNode) {
@@ -24,12 +26,16 @@ export function Header({
         'flex justify-center items-center text-white pointer-events-none',
         className,
       )}
-      style={{ height: GLOBAL_HEADER_HEIGHT, ...style }}
+      style={{
+        height: GLOBAL_HEADER_HEIGHT,
+        ...style,
+      }}
       {...rest}
     >
       <ContentPadding
         className={innerClassName}
         affectsHeight={false}
+        fullWidth={fullWidth}
         innerClassName="flex justify-between w-full text-sm"
       >
         <Link className="pointer-events-auto" href="/">
@@ -41,7 +47,7 @@ export function Header({
           {/* TODO: implement dropdown for nested menus */}
           {navItems.map((navItem) => (
             <Link
-              className="font-medium text-[16px] pointer-events-auto"
+              className="font-medium text-[14px] pointer-events-auto"
               key={navItem.href}
               href={navItem.href ?? ''}
             >

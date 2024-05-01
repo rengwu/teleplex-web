@@ -36,39 +36,9 @@ export function ArticleCarouselClient({
 
         <div className="overflow-visible" ref={emblaRef}>
           <div className="flex gap-8">
-            {articles.map((article) => {
-              const splitContent = article.content?.split(' ') ?? [];
-              return (
-                <Link
-                  href={`/articles/${article.id}`}
-                  className="flex-grow-0 flex-shrink-0 basis-full min-w-0 max-w-[460px]"
-                  key={article.id}
-                >
-                  <div className="flex flex-col h-full overflow-hidden">
-                    <div className="relative w-full h-full overflow-hidden rounded-lg aspect-[16/9]">
-                      <Image
-                        fill
-                        alt={article.cover_image?.alternativeText ?? ''}
-                        src={getStrapiImage(article.cover_image) ?? ''}
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex flex-col p-4">
-                      <div className="text-lg font-semibold">
-                        {article.title}
-                      </div>
-                      <div className="mt-2">
-                        {splitContent.slice(0, 40).join(' ')}
-                        {splitContent.length > 40 ? '...' : ''}
-                      </div>
-                      {/* <div className="flex flex-row justify-end mt-4">
-                        Read More
-                      </div> */}
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+            {articles.map((article) => (
+              <ArticleCard article={article} key={article.id} />
+            ))}
           </div>
         </div>
 
@@ -83,5 +53,42 @@ export function ArticleCarouselClient({
         )}
       </ContentPadding>
     </div>
+  );
+}
+
+export function ArticleCard({
+  article,
+  ...props
+}: {
+  article: NewsArticle_Plain;
+}) {
+  const splitContent = article.content?.split(' ') ?? [];
+  return (
+    <Link
+      href={`/article/${article.id}`}
+      className="flex-grow-0 flex-shrink-0 basis-full min-w-0 max-w-[460px]"
+      {...props}
+    >
+      <div className="flex flex-col h-full overflow-hidden">
+        <div className="relative w-full overflow-hidden aspect-[16/9]">
+          <Image
+            fill
+            alt={article.cover_image?.alternativeText ?? ''}
+            src={getStrapiImage(article.cover_image) ?? ''}
+            className="object-cover"
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <div className="text-lg font-semibold">{article.title} </div>
+          <div className="mt-2">
+            {splitContent.slice(0, 40).join(' ')}
+            {splitContent.length > 40 ? '...' : ''}
+          </div>
+          {/* <div className="flex flex-row justify-end mt-4">
+          Read More
+        </div> */}
+        </div>
+      </div>
+    </Link>
   );
 }

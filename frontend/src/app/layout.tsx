@@ -7,15 +7,22 @@ import { strapiRequest } from '@/utils/api';
 import { Site_Plain } from '@/types/api/site/content-types/site/site';
 import { Menu_Plain } from '@/types/components/components/interfaces/Menu';
 
-import { Archivo, DM_Sans, Fira_Mono, Inter } from 'next/font/google';
+import {
+  Archivo,
+  DM_Sans,
+  Encode_Sans,
+  Fira_Mono,
+  Inter,
+} from 'next/font/google';
 import {
   GLOBAL_CONTENT_MAX_WIDTH,
   GLOBAL_CONTENT_MAX_WIDTH_PX,
+  GLOBAL_HEADER_HEIGHT,
 } from './globals';
 
-const titleFont = Archivo({
+const titleFont = Encode_Sans({
   variable: '--font-title',
-  weight: '600',
+  weight: ['300', '400', '500', '600', '700', '800'],
   subsets: ['latin'],
   fallback: ['Times'],
 });
@@ -57,22 +64,7 @@ export default async function RootLayout({
           'relative flex flex-col items-center h-full min-h-screen overflow-auto overflow-x-hidden font-body',
         )}
       >
-        <div
-          className="sticky w-full backdrop-blur-[16px] z-[10] mix-blend-exclusion contrast-[1.8] brightness-[0.9] saturate-[0.2] overflow-hidden shadow-2xl shadow-black/10"
-          style={{
-            maxWidth: `clamp(100px, ${GLOBAL_CONTENT_MAX_WIDTH_PX}px, calc(100vw - 32px))`,
-            top: '8px',
-            left: '8px',
-            right: '8px',
-            borderRadius: '4px',
-          }}
-        >
-          <Header
-            className="bg-gray-200 bg-opacity-[0.14]"
-            navItems={headerMenu}
-          />
-        </div>
-
+        <SimpleHeader navItems={headerMenu} />
         <div
           className="flex flex-col items-center w-full flex-grow text-sm text-wrap"
           id="content-container"
@@ -85,5 +77,42 @@ export default async function RootLayout({
         />
       </body>
     </html>
+  );
+}
+
+export function SimpleHeader({ navItems = [] }: { navItems?: Menu_Plain[] }) {
+  return (
+    <Header
+      className="sticky top-0 w-full z-[10] backdrop-blur-[14px] mix-blend-difference contrast-[1.5] brightness-[0.9] saturate-[0.2]"
+      style={{
+        height: GLOBAL_HEADER_HEIGHT,
+      }}
+      fullWidth
+      navItems={navItems}
+    />
+  );
+}
+
+export function FloatingHeader({ navItems = [] }: { navItems?: Menu_Plain[] }) {
+  return (
+    <div
+      className="sticky w-full z-[10] backdrop-blur-[16px] mix-blend-difference contrast-[1.8] brightness-[0.9] saturate-[0.2] overflow-hidden shadow-2xl shadow-black/10 bg-gray-200 bg-opacity-[0.125]"
+      style={{
+        maxWidth: `clamp(100px, ${GLOBAL_CONTENT_MAX_WIDTH_PX}px, calc(100vw - 32px))`,
+        top: '6px',
+        left: '6px',
+        right: '6px',
+        borderRadius: '8px',
+        marginBottom: `6px`,
+      }}
+    >
+      <Header
+        // className="bg-gray-200 bg-opacity-[0.125]"
+        style={{
+          height: `calc(${GLOBAL_HEADER_HEIGHT} - 6px)`,
+        }}
+        navItems={navItems}
+      />
+    </div>
   );
 }
