@@ -23,7 +23,7 @@ const variants: { [key: string]: { className: string; style: object } } = {
 const buttonMixins = {
   inverted: {
     className: 'invert',
-    style: {},
+    style: { textRendering: 'geometricPrecision' },
   },
   blur: {
     className: 'blur',
