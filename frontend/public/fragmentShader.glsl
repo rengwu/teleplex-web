@@ -1,123 +1,48 @@
-uniform float iTime;
-uniform vec2 iResolution;
+// Author @patriciogv - 2015
+// http://patriciogonzalezvivo.com
+// https://www.shadertoy.com/view/MlfXzN
+// Modified by 2Pha
+
+uniform vec3 colour;
+uniform float rows;
+uniform float glow;
+uniform float glowRadius;
+uniform float charDetail;
+uniform float speed;
+uniform float iGlobalTime;
 varying vec2 vUv;
-uniform sampler2D iChannel0;
 
-// by srtuss, 2013
-// https://www.shadertoy.com/view/4sl3Dr#
-// rotate position around axis
-vec2 rotate(vec2 p, float a) {
-    return vec2(p.x * cos(a) - p.y * sin(a), p.x * sin(a) + p.y * cos(a));
+float random(in float x){
+    return fract(sin(x)*43758.5453);
 }
 
-// 1D random numbers
-float rand(float n) {
-    return fract(sin(n) * 43758.5453123);
+float random(in vec2 st){
+    return fract(sin(dot(st.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
 
-// 2D random numbers
-vec2 rand2(in vec2 p) {
-    return fract(vec2(sin(p.x * 591.32 + p.y * 154.077), cos(p.x * 391.32 + p.y * 49.077)));
+float randomChar(in vec2 outer,in vec2 inner){
+    float grid = charDetail;
+    vec2 margin = vec2(.2,.05);
+    float seed = 23.;
+    vec2 borders = step(margin,inner)*step(margin,1.-inner);
+    return step(.5,random(outer*seed+floor(inner*grid))) * borders.x * borders.y;
 }
 
-// 1D noise
-float noise1(float p) {
-    float fl = floor(p);
-    float fc = fract(p);
-    return mix(rand(fl), rand(fl + 1.0), fc);
-}
+vec3 matrix(in vec2 st){
+    vec2 ipos = floor(st*rows)+vec2(1.,0.);
 
-// voronoi distance noise, based on iq's articles
-float voronoi(in vec2 x) {
-    vec2 p = floor(x);
-    vec2 f = fract(x);
+    ipos += vec2(.0,floor(iGlobalTime*speed*random(ipos.x)));
 
-    vec2 res = vec2(8.0);
-    for(int j = -1; j <= 1; j++) {
-        for(int i = -1; i <= 1; i++) {
-            vec2 b = vec2(i, j);
-            vec2 r = vec2(b) - f + rand2(p + b);
+    vec2 fpos = fract(st*rows);
+    vec2 center = (.5-fpos);
 
-   // chebyshev distance, one of many ways to do this
-            float d = max(abs(r.x), abs(r.y));
+    float pct = random(ipos);
+    float glowamount = (glowRadius-dot(center,center)*3.)*glow;
 
-            if(d < res.x) {
-                res.y = res.x;
-                res.x = d;
-            } else if(d < res.y) {
-                res.y = d;
-            }
-        }
-    }
-    return res.y - res.x;
+    return vec3(randomChar(ipos,fpos) * pct * glowamount) * colour;
 }
 
 void main() {
-    vec2 fragCoord = vUv * iResolution;
-
-    float flicker = noise1(iTime * 2.0) * 0.8 + 0.4;
-
-    vec2 uv = fragCoord.xy / iResolution.xy;
-    uv = (uv - 0.5) * 2.0;
-    vec2 suv = uv;
-    uv.x *= iResolution.x / iResolution.y;
-
-    float v = 0.0;
-
- // that looks highly interesting:
- //v = 1.0 - length(uv) * 1.3;
-
- // a bit of camera movement
-    uv *= 0.6 + sin(iTime * 0.1) * 0.4;
-    uv = rotate(uv, sin(iTime * 0.3) * 1.0);
-    uv += iTime * 0.4;
-
- // add some noise octaves
-    float a = 0.6, f = 1.0;
-
-    for(int i = 0; i < 3; i++) // 4 octaves also look nice, its getting a bit slow though
-    {
-        float v1 = voronoi(uv * f + 5.0);
-        float v2 = 0.0;
-
-  // make the moving electrons-effect for higher octaves
-        if(i > 0) {
-   // of course everything based on voronoi
-            v2 = voronoi(uv * f * 0.5 + 50.0 + iTime);
-
-            float va = 0.0, vb = 0.0;
-            va = 1.0 - smoothstep(0.0, 0.1, v1);
-            vb = 1.0 - smoothstep(0.0, 0.08, v2);
-            v += a * pow(va * (0.5 + vb), 2.0);
-        }
-
-  // make sharp edges
-        v1 = 1.0 - smoothstep(0.0, 0.3, v1);
-
-  // noise is used as intensity map
-        v2 = a * (noise1(v1 * 5.5 + 0.1));
-
-  // octave 0's intensity changes a bit
-        if(i == 0)
-            v += v2 * flicker;
-        else
-            v += v2;
-
-        f *= 3.0;
-        a *= 0.7;
-    }
-
- // slight vignetting
-    v *= exp(-0.6 * length(suv)) * 1.2;
-
- // use texture channel0 for color? why not.
-    vec3 cexp = texture(iChannel0, uv * 0.001).xyz * 3.0 + texture(iChannel0, uv * 0.01).xyz;//vec3(1.0, 2.0, 4.0);
-    cexp *= 1.4;
-
- // old blueish color set
- //vec3 cexp = vec3(6.0, 4.0, 2.0);
-
-    vec3 col = vec3(pow(v, cexp.x), pow(v, cexp.y), pow(v, cexp.z)) * 2.0;
-
-    gl_FragColor = vec4(col, 1.0);
+    gl_FragColor = vec4(matrix(vUv),1.0);
 }
+  

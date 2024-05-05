@@ -12,11 +12,16 @@ export function DecoratedContent({
   ...props
 }: { data?: DecoratedContent_Plain } & GenericReactHTMLNode) {
   return (
-    <div className="py-24">
+    <div className="py-36">
       <ContentPadding className="" {...props}>
         <div className="grid lg:grid-cols-2">
           <div>
-            <div className={cn('font-title font-semibold text-3xl', 'mb-8')}>
+            <div
+              className={cn(
+                'text-3xl lg:text-4xl font-title font-bold !leading-normal break-words',
+                'mb-8',
+              )}
+            >
               {data?.mainContent}
             </div>
             <div className="mb-4">{data?.subContent}</div>

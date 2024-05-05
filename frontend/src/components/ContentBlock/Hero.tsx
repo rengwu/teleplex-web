@@ -9,6 +9,10 @@ import { Button } from '../Button';
 import { ButtonContainer } from '../ButtonContainer';
 import { ContentPadding } from '../ContentPadding';
 import { Brand } from '../Brand';
+import { CloudShaderCanvas } from '../Shaders/Cloud';
+import { MarcherCanvas } from '../Shaders/Marcher';
+import { WarpSpeedCanvas } from '../Shaders/WarpSpeed';
+import { GradientCanvas } from '../Shaders/GradientCanvas';
 
 const defaultStyles = {
   transform: {
@@ -78,7 +82,7 @@ export function Hero({
   data,
   ...props
 }: { data?: Hero_Plain } & GenericReactHTMLNode) {
-  const { frameStyles } = useAnimateStyles(keyframes, defaultStyles);
+  // const { frameStyles } = useAnimateStyles(keyframes, defaultStyles);
 
   return (
     <div
@@ -89,7 +93,7 @@ export function Hero({
       style={combine(
         {
           background: `
-              linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.8)),
+              linear-gradient(0deg, #f5f5f5 0%, #191919 80%),
               url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")
             `,
         },
@@ -105,24 +109,20 @@ export function Hero({
       {...props}
     >
       {/* animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {/* <div
-          className=""
-          style={{
-            ...frameStyles,
-            ...{ transformOrigin: 'center' },
-          }}
-        >
-          <Brand fill="white" className="w-[100vw] h-full" />
-        </div> */}
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none invert hue-rotate-[120deg] contrast-[1.4]">
+        <GradientCanvas />
       </div>
 
       {/* content */}
-      <ContentPadding fullWidth innerClassName="flex flex-col z-[1] flex-grow">
+      <ContentPadding
+        className="h-full"
+        innerClassName="h-full relative flex flex-col items-center justify-center"
+      >
         <div
           className={cn(
-            'text-3xl lg:text-4xl font-title font-bold !leading-normal break-words max-w-[1000px]',
-            'mb-8',
+            'text-3xl md:text-4xl lg:text-5xl font-title font-bold !leading-normal break-words max-w-[1200px] text-center',
+            'mt-[-56px] mb-16',
           )}
         >
           {data?.mainTagline}

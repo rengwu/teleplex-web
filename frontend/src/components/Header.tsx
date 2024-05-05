@@ -39,7 +39,7 @@ export function Header({
         innerClassName="flex justify-between w-full text-sm"
       >
         <Link className="pointer-events-auto" href="/">
-          <div className="h-[36px] py-2 rounded ">
+          <div className="h-[36px] py-2 rounded">
             <Brand fill="white" className="h-full" />
           </div>
         </Link>

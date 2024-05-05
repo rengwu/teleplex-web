@@ -83,11 +83,13 @@ export default async function RootLayout({
 export function SimpleHeader({ navItems = [] }: { navItems?: Menu_Plain[] }) {
   return (
     <Header
-      className="sticky top-0 w-full z-[10] backdrop-blur-[14px] mix-blend-difference contrast-[1.5] brightness-[0.9] saturate-[0.2]"
+      // className="sticky top-0 w-full z-[10] backdrop-blur-[14px] mix-blend-difference"
+      className="sticky top-0 w-full z-[10] bg-black/70 backdrop-blur-[14px]"
       style={{
         height: GLOBAL_HEADER_HEIGHT,
+        textRendering: 'geometricPrecision',
       }}
-      fullWidth
+      // fullWidth
       navItems={navItems}
     />
   );
