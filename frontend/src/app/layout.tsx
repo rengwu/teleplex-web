@@ -84,7 +84,7 @@ export function SimpleHeader({ navItems = [] }: { navItems?: Menu_Plain[] }) {
   return (
     <Header
       // className="sticky top-0 w-full z-[10] backdrop-blur-[14px] mix-blend-difference"
-      className="sticky top-0 w-full z-[10] bg-black/70 backdrop-blur-[14px]"
+      className="sticky top-0 w-full z-[10] bg-black/65 backdrop-blur-[14px]"
       style={{
         height: GLOBAL_HEADER_HEIGHT,
         textRendering: 'geometricPrecision',

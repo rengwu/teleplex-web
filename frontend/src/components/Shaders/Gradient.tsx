@@ -1,6 +1,6 @@
-import { Canvas, useThree } from '@react-three/fiber';
-import { useMemo, useRef } from 'react';
-import { PlaneGeometry, Vector3 } from 'three';
+import { Canvas } from '@react-three/fiber';
+import { useMemo } from 'react';
+import { PlaneGeometry } from 'three';
 
 // @ts-ignore
 import ShaderToyMaterial from 'three-shadertoy-material';
@@ -15,7 +15,6 @@ export function GradientCanvas({ ...props }) {
 
 export function GradientScene() {
   const material = new ShaderToyMaterial(shadercode);
-
   const geometry = useMemo(() => new PlaneGeometry(), []);
 
   return (

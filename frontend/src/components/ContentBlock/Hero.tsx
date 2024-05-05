@@ -1,80 +1,13 @@
 'use client';
 
 import { GLOBAL_CONTENT_MAX_WIDTH, GLOBAL_HEADER_HEIGHT } from '@/app/globals';
-import { useAnimateStyles } from '@/hooks/useAnimateStyles';
 import { GenericReactHTMLNode } from '@/types';
 import { Hero_Plain } from '@/types/components/content-block/interfaces/Hero';
 import { cn, combine } from '@/utils/common';
 import { Button } from '../Button';
 import { ButtonContainer } from '../ButtonContainer';
 import { ContentPadding } from '../ContentPadding';
-import { Brand } from '../Brand';
-import { CloudShaderCanvas } from '../Shaders/Cloud';
-import { MarcherCanvas } from '../Shaders/Marcher';
-import { WarpSpeedCanvas } from '../Shaders/WarpSpeed';
-import { GradientCanvas } from '../Shaders/GradientCanvas';
-
-const defaultStyles = {
-  transform: {
-    perspective: '1000px',
-  },
-  opacity: '0.5',
-};
-
-// const keyframes = [
-//   {
-//     styles: {
-//       transform: {
-//         translateX: '-20%',
-//         translateZ: '-55px',
-//         rotateY: '-12deg',
-//       },
-//       filter: 'blur(30px)',
-//     },
-//     duration: 0,
-//   },
-//   {
-//     styles: {
-//       transform: {
-//         translateX: '20%',
-//         translateZ: '-55px',
-//         rotateY: '-12deg',
-//       },
-//       filter: 'blur(5px)',
-//     },
-//     duration: 10000,
-//     easing: 'linear',
-//   },
-// ];
-
-const keyframes = [
-  {
-    styles: {
-      transform: {
-        translateX: '-8%',
-        translateZ: '-55px',
-        rotateY: '-28deg',
-        rotateX: '16deg',
-        scale: '0.6',
-      },
-      filter: 'blur(1px)',
-    },
-    duration: 0,
-  },
-  {
-    styles: {
-      transform: {
-        translateX: '-6%',
-        translateZ: '55px',
-        rotateY: '-12deg',
-        scale: '0.8',
-      },
-      filter: 'blur(5px)',
-    },
-    duration: 10000,
-    easing: 'linear',
-  },
-];
+import { GradientCanvas } from '../Shaders/Gradient';
 
 export function Hero({
   className,
@@ -82,8 +15,6 @@ export function Hero({
   data,
   ...props
 }: { data?: Hero_Plain } & GenericReactHTMLNode) {
-  // const { frameStyles } = useAnimateStyles(keyframes, defaultStyles);
-
   return (
     <div
       className={cn(
