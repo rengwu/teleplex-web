@@ -1,41 +1,66 @@
 'use client';
 
+import { MockUnnamed } from '@/assets/images';
 import { GenericReactHTMLNode } from '@/types';
 import { DecoratedContent_Plain } from '@/types/components/content-block/interfaces/DecoratedContent';
-import { ContentPadding } from '../ContentPadding';
-import { cn } from '@/utils/common';
+import { cn, getStrapiImage } from '@/utils/common';
+import Image from 'next/image';
 import { Button } from '../Button';
 import { ButtonContainer } from '../ButtonContainer';
+import { ContentPadding } from '../ContentPadding';
+import { HypnoferromagnetismCanvas } from '../Shaders/Hypnoferromagnetism';
+import { TitleText } from '../TitleText';
 
 export function DecoratedContent({
   data,
   ...props
 }: { data?: DecoratedContent_Plain } & GenericReactHTMLNode) {
-  return (
-    <div className="py-36">
-      <ContentPadding className="" {...props}>
-        <div className="grid lg:grid-cols-2">
-          <div>
-            <div
-              className={cn(
-                'text-3xl lg:text-4xl font-title font-bold !leading-normal break-words',
-                'mb-8',
-              )}
-            >
-              {data?.mainContent}
-            </div>
-            <div className="mb-4">{data?.subContent}</div>
+  const image = getStrapiImage(data?.media) ?? null;
 
-            <ButtonContainer>
+  return (
+    <div className="relative">
+      <ContentPadding affectsHeight={false} affectsWidth={false} {...props}>
+        <div className="relative grid grid-cols-12 overflow-hidden">
+          <ContentPadding
+            className={cn(
+              'col-span-12 py-28 md:py-32 xl:py-48 z-[2] text-center',
+              image ? 'lg:col-span-7 lg:text-start' : '',
+            )}
+            innerClassName={cn(image && '')}
+          >
+            <TitleText className={cn('mb-8')}>{data?.mainContent}</TitleText>
+            <div className="mb-12">{data?.subContent}</div>
+
+            <ButtonContainer
+              className={cn('justify-center', image ? 'lg:justify-start' : '')}
+            >
               {data?.links.map((link) => (
                 <Button href={link.href} key={link.label}>
                   {link.label}
                 </Button>
               ))}
             </ButtonContainer>
-          </div>
+          </ContentPadding>
+          {image && (
+            <ContentPadding
+              className="lg:col-span-5 items-center w-full h-full ml-[-2rem]"
+              innerClassName=" w-full h-full"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  fill
+                  src={image}
+                  alt="mock"
+                  className="object-contain"
+                ></Image>
+              </div>
+            </ContentPadding>
+          )}
         </div>
       </ContentPadding>
+      <div className="absolute z-[-1] inset-0 flex items-center justify-center pointer-events-none invert brightness-[1.4] mix-blend-soft-light">
+        <HypnoferromagnetismCanvas />
+      </div>
     </div>
   );
 }

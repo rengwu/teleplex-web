@@ -8,6 +8,7 @@ import { BiChevronLeft } from 'react-icons/bi';
 import { Button } from '../Button';
 import { ContentPadding } from '../ContentPadding';
 import { ButtonContainer } from '../ButtonContainer';
+import { TitleText } from '../TitleText';
 
 export function PageHero({
   data,
@@ -40,15 +41,9 @@ export function PageHero({
             </ButtonContainer>
           )}
           <div className="grid lg:grid-cols-2">
-            <div
-              className={cn(
-                'font-title font-semibold text-3xl',
-                'mt-4 mb-8',
-                'lg:col-span-2',
-              )}
-            >
+            <TitleText className={cn('mt-4 mb-8', 'lg:col-span-2')}>
               {data?.title}
-            </div>
+            </TitleText>
             <div className="mb-4">{data?.caption}</div>
             <div className="flex gap-4">
               {data?.links.map((link) => (

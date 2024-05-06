@@ -8,6 +8,7 @@ import { Button } from '../Button';
 import { ButtonContainer } from '../ButtonContainer';
 import { ContentPadding } from '../ContentPadding';
 import { GradientCanvas } from '../Shaders/Gradient';
+import { TitleText } from '../TitleText';
 
 export function Hero({
   className,
@@ -41,7 +42,10 @@ export function Hero({
     >
       {/* animation */}
 
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none invert hue-rotate-[120deg] contrast-[1.4]">
+      <div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none hue-rotate-[120deg] contrast-[1.4]"
+        style={{ background: 'black' }}
+      >
         <GradientCanvas />
       </div>
 
@@ -50,14 +54,15 @@ export function Hero({
         className="h-full"
         innerClassName="h-full relative flex flex-col items-center justify-center"
       >
-        <div
+        <TitleText
+          larger
           className={cn(
-            'text-3xl md:text-4xl lg:text-5xl font-title font-bold !leading-normal break-words max-w-[1200px] text-center',
-            'mt-[-56px] mb-16',
+            'break-words max-w-[1200px] text-center',
+            'mt-[-56px] mb-12',
           )}
         >
           {data?.mainTagline}
-        </div>
+        </TitleText>
         <ButtonContainer>
           {data?.links?.map((link) => (
             <Button href={link.href} key={link.label} mixins={['inverted']}>

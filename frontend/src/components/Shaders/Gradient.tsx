@@ -35,6 +35,6 @@ const shadercode = `void mainImage( out vec4 fragColor, in vec2 fragCoord )
     }
     d += iTime * 0.5 * 0.1;
     vec3 col = vec3(cos(uv * vec2(d, a)) * 0.6 + 0.4, cos(a + d) * 0.5 + 0.5);
-    col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5);
+    col = 1.0 - cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5);
     fragColor = vec4(col,1.0);
 }`;

@@ -51,7 +51,7 @@ export function useAnimateStyles(
   const [frameStyles, setFrameStyles] = useState(cachedFrameStyles[0]);
 
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout;
     function animateKeyframe(i: number) {
       setKeyframeIndex(i);
       setFrameStyles(cachedFrameStyles[i]);

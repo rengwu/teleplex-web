@@ -55,6 +55,7 @@ export interface ContentBlockDecoratedContent extends Schema.Component {
     mainContent: Attribute.Text;
     subContent: Attribute.Text;
     links: Attribute.Component<'primitives.link', true>;
+    media: Attribute.Media;
   };
 }
 
