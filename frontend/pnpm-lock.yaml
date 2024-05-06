@@ -56,9 +56,6 @@ dependencies:
   remark-gfm:
     specifier: ^4.0.0
     version: 4.0.0
-  shadertoy-react:
-    specifier: ^1.1.2
-    version: 1.1.2(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^2.2.2
     version: 2.2.2
@@ -3688,16 +3685,6 @@ packages:
       functions-have-names: 1.2.3
       has-property-descriptors: 1.0.1
     dev: true
-
-  /shadertoy-react@1.1.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xlZA+GipOKR6B1SDHBrVLBK8zpfWFMOKddXvdU9B3yVhWlw4mX4Buex2ZxD3DJJeD8tw0kOU3jVeF2KgAeFUHA==}
-    peerDependencies:
-      react: ^17.0.2
-      react-dom: ^17.0.2
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
