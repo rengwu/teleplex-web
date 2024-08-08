@@ -24,8 +24,8 @@ export const ContentPadding = ({
     <div className={`w-full flex flex-col items-center ${className}`} {...rest}>
       <div
         className={cn(
-          affectsHeight ? 'py-[16px] sm:py-[24px]' : '',
-          affectsWidth ? 'px-[16px] sm:px-[24px]' : '',
+          affectsHeight ? `py-[16px] sm:py-[24px]` : '',
+          affectsWidth ? `px-[16px] sm:px-[24px]` : '',
           `w-full ${innerClassName}`,
         )}
         style={combine(

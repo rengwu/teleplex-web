@@ -41,6 +41,7 @@ export interface ContentBlockArticleCarousel extends Schema.Component {
       > &
       Attribute.DefaultTo<10>;
     links: Attribute.Component<'primitives.link', true>;
+    hideHeader: Attribute.Boolean;
   };
 }
 
@@ -75,6 +76,7 @@ export interface ContentBlockHero extends Schema.Component {
     fullScreenHeight: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    imageLinks: Attribute.Component<'primitives.link', true>;
   };
 }
 
@@ -107,6 +109,7 @@ export interface PrimitivesLink extends Schema.Component {
     label: Attribute.String;
     href: Attribute.String;
     icon: Attribute.Relation<'primitives.link', 'oneToOne', 'api::icon.icon'>;
+    image: Attribute.Media;
   };
 }
 

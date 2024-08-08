@@ -26,12 +26,14 @@ export function ArticleCarouselClient({
   });
 
   return (
-    <div className={cn('py-24 bg-gray-200/50', className)} {...props}>
+    <div className={cn('py-12 bg-gray-200/50', className)} {...props}>
       <ContentPadding>
-        <div className="flex flex-row justify-between items-center mb-8">
-          <TitleText>{data?.title}</TitleText>
-          <Link href={`/articles`}>See More</Link>
-        </div>
+        {!data?.hideHeader && (
+          <div className="flex flex-row justify-between items-center mb-8">
+            <TitleText>{data?.title}</TitleText>
+            <Button href={`/articles`}>See More</Button>
+          </div>
+        )}
 
         <div className="overflow-visible" ref={emblaRef}>
           <div className="flex gap-8">

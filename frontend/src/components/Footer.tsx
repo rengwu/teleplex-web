@@ -14,7 +14,7 @@ export function Footer({
   return (
     <div
       className={cn(
-        'flex justify-center items-center border-t border-gray-300',
+        'flex justify-center items-center border-t border-gray-300 w-full flex-shrink-0',
         className,
       )}
       {...rest}

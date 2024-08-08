@@ -5,7 +5,7 @@ import { cloneElement } from 'react';
 
 const common = {
   className:
-    'px-4 py-2 flex flex-row flex-nowrap items-center justify-center font-semibold rounded-full text-white/90 duration-150',
+    'px-8 py-3 flex flex-row flex-nowrap items-center justify-center font-semibold rounded-full text-white/90 duration-150',
   style: {},
 };
 

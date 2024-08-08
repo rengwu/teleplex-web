@@ -1,8 +1,3 @@
-// Author @patriciogv - 2015
-// http://patriciogonzalezvivo.com
-// https://www.shadertoy.com/view/MlfXzN
-// Modified by 2Pha
-
 uniform vec3 colour;
 uniform float rows;
 uniform float glow;

@@ -30,6 +30,11 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "imageLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.link"
     }
   }
 }

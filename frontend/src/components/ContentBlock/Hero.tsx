@@ -9,6 +9,7 @@ import { ButtonContainer } from '../ButtonContainer';
 import { ContentPadding } from '../ContentPadding';
 import { GradientCanvas } from '../Shaders/Gradient';
 import { TitleText } from '../TitleText';
+import { HeroCarousel } from './HeroCarousel';
 
 export function Hero({
   className,
@@ -19,7 +20,7 @@ export function Hero({
   return (
     <div
       className={cn(
-        'relative flex flex-col h-screen bg-black/90 text-white/95 overflow-hidden',
+        'relative flex flex-col min-h-screen bg-black/90 text-white/95 h-screen',
         className,
       )}
       style={combine(
@@ -50,20 +51,11 @@ export function Hero({
       </div>
 
       {/* content */}
-      <ContentPadding
-        className="h-full"
-        innerClassName="h-full relative flex flex-col items-center justify-center"
-      >
-        <TitleText
-          larger
-          className={cn(
-            'break-words max-w-[1200px] text-center',
-            'mt-[-56px] mb-12',
-          )}
-        >
+      <ContentPadding className="" innerClassName="relative flex flex-col">
+        <TitleText larger className={cn('break-words max-w-[1200px]', 'my-4')}>
           {data?.mainTagline}
         </TitleText>
-        <ButtonContainer>
+        <ButtonContainer className={cn('my-4')}>
           {data?.links?.map((link) => (
             <Button href={link.href} key={link.label} mixins={['inverted']}>
               {link.label}
@@ -71,8 +63,18 @@ export function Hero({
           ))}
         </ButtonContainer>
       </ContentPadding>
+      <div className="h-full mb-8 flex items-center">
+        <HeroCarousel
+          imageLinks={data?.imageLinks ?? []}
+          className="select-none"
+        />
+      </div>
     </div>
   );
+}
+
+export function ServiceCarousel({ ...props }) {
+  return <div {...props}>Carousel</div>;
 }
 
 export function HeroRoundedRectangle({

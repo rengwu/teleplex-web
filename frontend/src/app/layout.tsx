@@ -48,7 +48,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en" className={cn(fontClass)}>
+    <html lang="en" className={cn(fontClass, 'h-full')}>
       <body
         className={cn(
           'relative flex flex-col items-center h-full min-h-screen overflow-auto overflow-x-hidden font-body',

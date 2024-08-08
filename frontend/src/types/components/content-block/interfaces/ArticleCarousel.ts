@@ -16,6 +16,7 @@ export interface ArticleCarousel {
   featured_articles: { data: NewsArticle[] };
   limit: number;
   links: Link[];
+  hideHeader?: boolean;
 }
 export interface ArticleCarousel_Plain {
   title?: string;
@@ -23,6 +24,7 @@ export interface ArticleCarousel_Plain {
   featured_articles: NewsArticle_Plain[];
   limit: number;
   links: Link_Plain[];
+  hideHeader?: boolean;
 }
 
 export interface ArticleCarousel_NoRelations {
@@ -31,5 +33,6 @@ export interface ArticleCarousel_NoRelations {
   featured_articles: number[];
   limit: number;
   links: Link_NoRelations[];
+  hideHeader?: boolean;
 }
 

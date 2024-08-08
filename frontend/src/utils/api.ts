@@ -34,7 +34,7 @@ export async function strapiRequest<T>(
       options.body = JSON.stringify(params);
     }
   }
-
+  ``;
   const response = await fetch(apiHost + url, options);
 
   if (response.status !== 200) {

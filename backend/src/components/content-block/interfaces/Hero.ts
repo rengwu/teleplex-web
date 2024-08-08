@@ -14,6 +14,7 @@ export interface Hero {
   caption?: string;
   links: Link[];
   fullScreenHeight: boolean;
+  imageLinks: Link[];
 }
 export interface Hero_Plain {
   mainTagline?: string;
@@ -22,6 +23,7 @@ export interface Hero_Plain {
   caption?: string;
   links: Link_Plain[];
   fullScreenHeight: boolean;
+  imageLinks: Link_Plain[];
 }
 
 export interface Hero_NoRelations {
@@ -31,5 +33,6 @@ export interface Hero_NoRelations {
   caption?: string;
   links: Link_NoRelations[];
   fullScreenHeight: boolean;
+  imageLinks: Link_NoRelations[];
 }
 

@@ -9,12 +9,14 @@ import { Button } from '../Button';
 import { ContentPadding } from '../ContentPadding';
 import { ButtonContainer } from '../ButtonContainer';
 import { TitleText } from '../TitleText';
+import { useRouter } from 'next/navigation';
 
 export function PageHero({
   data,
   style,
   ...props
 }: { data?: PageHero_Plain } & GenericReactHTMLNode) {
+  const router = useRouter();
   return (
     <div
       className="pb-8 bg-gray-200/40"
@@ -31,10 +33,10 @@ export function PageHero({
           {data?.hasBack && (
             <ButtonContainer className="">
               <Button
-                onClick={() => {}}
+                onClick={() => router.back()} // todo: graceful back
                 icon={<BiChevronLeft />}
                 variant="naked"
-                className="px-0"
+                className="px-0 text-black"
               >
                 Back
               </Button>
