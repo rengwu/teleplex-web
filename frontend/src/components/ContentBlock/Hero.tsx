@@ -63,7 +63,7 @@ export function Hero({
           ))}
         </ButtonContainer>
       </ContentPadding>
-      <div className="h-full mb-8 flex items-center">
+      <div className="h-full mb-8 py-8 sm:mb-12 sm:py-12 flex items-center">
         <HeroCarousel
           imageLinks={data?.imageLinks ?? []}
           className="select-none"

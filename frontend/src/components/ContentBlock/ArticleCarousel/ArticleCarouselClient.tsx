@@ -26,17 +26,17 @@ export function ArticleCarouselClient({
   });
 
   return (
-    <div className={cn('py-12 bg-gray-200/50', className)} {...props}>
+    <div className={cn('py-20 bg-gray-200/50', className)} {...props}>
       <ContentPadding>
         {!data?.hideHeader && (
-          <div className="flex flex-row justify-between items-center mb-8">
+          <div className="flex flex-row justify-between items-center mb-12">
             <TitleText>{data?.title}</TitleText>
             <Button href={`/articles`}>See More</Button>
           </div>
         )}
 
         <div className="overflow-visible" ref={emblaRef}>
-          <div className="flex gap-8">
+          <div className="flex gap-16">
             {articles.map((article) => (
               <ArticleCard article={article} key={article.id} />
             ))}
@@ -67,11 +67,11 @@ export function ArticleCard({
   return (
     <Link
       href={`/article/${article.id}`}
-      className="flex-grow-0 flex-shrink-0 basis-full min-w-0 max-w-[460px]"
+      className="flex-grow-0 flex-shrink-0 basis-full min-w-0 max-w-[420px]"
       {...props}
     >
       <div className="flex flex-col h-full overflow-hidden">
-        <div className="relative w-full overflow-hidden aspect-[16/9]">
+        <div className="relative w-full overflow-hidden aspect-[16/12]">
           <Image
             fill
             alt={article.cover_image?.alternativeText ?? ''}

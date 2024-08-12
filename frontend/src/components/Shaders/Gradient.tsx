@@ -27,7 +27,7 @@ const shadercode = `void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float mr = min(iResolution.x, iResolution.y);
     vec2 uv = (fragCoord * 2.0 - iResolution.xy) / mr;
 
-    float d = -iTime * 0.5 * 0.2 * 0.2;
+    float d = (-iTime * 0.5 * 0.2 * 0.2) - 3600.0;
     float a = 0.0;
     for (float i = 0.0; i < 8.0; ++i) {
         a += cos(i - d - a * uv.x);
@@ -35,6 +35,6 @@ const shadercode = `void mainImage( out vec4 fragColor, in vec2 fragCoord )
     }
     d += iTime * 0.5 * 0.1;
     vec3 col = vec3(sin(uv * vec2(d, a)) * 0.6 + 0.4, cos(a + d) * 0.5 + 0.5);
-    col =   sin(col * cos(vec3(d, a, 2.5)) * 0.8 + 0.2);
+    col =   sin(col * cos(vec3(d, a, 2.1)) * 0.8 + 0.1);
     fragColor = vec4(col,1.0);
 }`;
